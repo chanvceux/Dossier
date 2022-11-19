@@ -30,7 +30,7 @@ public class KafkaListeners {
                             .append(emailMessageDTO.getApplicationID())
                             .append(" успешно зарегистрирована\n")
                             .append("\nДля того, чтобы продолжить оформление, перейдите по ссылке: ")
-                            .append("\nhttp://localhost:8081/swagger-ui/index.html#/DealController/calculate");
+                            .append("\nhttp://localhost:8084/swagger-ui/index.html#/deal-controller/calculate");
                     mailService.textMessageSending(emailMessageDTO.getAddress(), "ЗАЯВКА НА ПОЛУЧЕНИЕ КРЕДИТА", messageBody.toString());
                 } catch (MailException mailException) {
                     mailException.printStackTrace();
@@ -43,7 +43,7 @@ public class KafkaListeners {
                             .append(emailMessageDTO.getApplicationID())
                             .append(" УСПЕШНО прошла проверку.\n")
                             .append("\nПерейдите по ссылке ниже для продолжения: ")
-                            .append("\nhttp://localhost:8081/swagger-ui/index.html#/DealController/documentSend");
+                            .append("\nhttp://localhost:8084/swagger-ui/index.html#/deal-controller/documentSend");
                     mailService.textMessageSending(emailMessageDTO.getAddress(), "СТАТУС ПО ЗАЯВКЕ НА КРЕДИТ", messageBody.toString());
                 } catch (MailException mailException) {
                     mailException.printStackTrace();
@@ -56,7 +56,7 @@ public class KafkaListeners {
                             .append(emailMessageDTO.getApplicationID())
                             .append("\n")
                             .append("Проверьте правильность документов, затем перейдите по ссылке ниже и вставьте номер заявки в поле для подтверждения с помощью кода: ")
-                            .append("\nlocalhost:8081/swagger-ui/index.html#/DealController/documentSign");
+                            .append("\nhttp://localhost:8084/swagger-ui/index.html#/deal-controller/documentSign");
                     mailService.documentMessageSending(emailMessageDTO.getAddress(), "ДОКУМЕНТЫ ПО ЗАЯВКЕ НА КРЕДИТ", messageBody.toString(), emailMessageDTO.getApplicationID());
                 } catch (MailException | IOException mailException) {
                     mailException.printStackTrace(); }
@@ -69,7 +69,7 @@ public class KafkaListeners {
                             .append(dealMC.getApplication(emailMessageDTO.getApplicationID()).getSesCode())
                             .append("\n")
                             .append("Для того, чтобы подтвердить операцию, введите указанный код по ссылке ниже: ")
-                            .append("\nhttp://localhost:8081/swagger-ui/index.html#/DealController/documentCode")
+                            .append("\nhttp://localhost:8084/swagger-ui/index.html#/deal-controller/documentCode")
                             .append("\nЕсли вы не подавали заявку, обратитесь к оператору горячей линии по номеру +79876543210.");
                     mailService.textMessageSending(emailMessageDTO.getAddress(), "КОД ПОДТВЕРЖДЕНИЯ ЗАЯВКИ ПО КРЕДИТУ", messageBody.toString());
                 } catch (MailException mailException) {
