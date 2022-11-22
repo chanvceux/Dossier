@@ -74,7 +74,8 @@ public class DocumentGenerationServiceImpl implements DocumentGenerationService 
     private File creatingDocument (StringBuilder stringBuilder, String docName) {
         File document = null;
         try {
-            document = File.createTempFile(docName, ".txt", new File("src/main/resources"));
+            document = File.createTempFile(docName, ".txt", new File("./"));
+//            document = File.createTempFile(docName, ".txt", new File("src/main/resources"));
             try (FileWriter fileWriter = new FileWriter(document)) {
                 fileWriter.write(stringBuilder.toString());
                 fileWriter.flush();
